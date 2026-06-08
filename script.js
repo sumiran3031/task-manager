@@ -50,7 +50,7 @@ function init() {
   searchInput.addEventListener('input', render);
   sortSelect.addEventListener('change', render);
 
-  openModalBtn.addEventListener('click', openModal);
+  openModalBtn.addEventListener('click', () => openModal());
   closeModalBtn.addEventListener('click', closeModal);
   cancelBtn.addEventListener('click', closeModal);
   modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
