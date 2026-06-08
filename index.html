@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — Stay on top of things</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-icon">✅</span>
+        <span class="brand-name">TaskFlow</span>
+      </div>
+
+      <nav class="filters">
+        <button class="filter-btn active" data-filter="all">
+          <span class="filter-icon">📋</span> All Tasks
+          <span class="badge" id="badge-all">0</span>
+        </button>
+        <button class="filter-btn" data-filter="today">
+          <span class="filter-icon">☀️</span> Today
+          <span class="badge" id="badge-today">0</span>
+        </button>
+        <button class="filter-btn" data-filter="pending">
+          <span class="filter-icon">🕐</span> Pending
+          <span class="badge" id="badge-pending">0</span>
+        </button>
+        <button class="filter-btn" data-filter="completed">
+          <span class="filter-icon">🎉</span> Completed
+          <span class="badge" id="badge-completed">0</span>
+        </button>
+      </nav>
+
+      <div class="categories-section">
+        <p class="section-label">Categories</p>
+        <div class="category-list">
+          <button class="cat-btn active" data-cat="all">All</button>
+          <button class="cat-btn" data-cat="work">💼 Work</button>
+          <button class="cat-btn" data-cat="personal">🏠 Personal</button>
+          <button class="cat-btn" data-cat="health">💪 Health</button>
+          <button class="cat-btn" data-cat="shopping">🛒 Shopping</button>
+        </div>
+      </div>
+
+      <div class="progress-box">
+        <p class="progress-label">Today's Progress</p>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <p class="progress-text" id="progress-text">0 of 0 done</p>
+      </div>
+    </aside>
+
+    <main class="main">
+
+      <header class="topbar">
+        <div>
+          <h1 class="page-title" id="page-title">All Tasks</h1>
+          <p class="page-sub" id="page-date"></p>
+        </div>
+        <button class="add-btn" id="open-modal-btn">+ Add Task</button>
+      </header>
+
+      <div class="toolbar">
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" class="search-input" placeholder="Search tasks..." />
+        </div>
+        <select id="sort-select" class="sort-select">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="priority">By priority</option>
+          <option value="az">A → Z</option>
+        </select>
+      </div>
+
+      <div class="task-list" id="task-list">
+        <div class="empty-state" id="empty-state">
+          <div class="empty-emoji">🌿</div>
+          <p class="empty-title">Nothing here yet!</p>
+          <p class="empty-sub">Add a task to get started.</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title">New Task</h2>
+        <button class="modal-close" id="close-modal-btn">✕</button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Task name *</label>
+        <input type="text" id="task-input" class="form-input" placeholder="What do you need to do?" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Notes</label>
+        <textarea id="task-notes" class="form-input form-textarea" placeholder="Any extra details..."></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half">
+          <label class="form-label">Category</label>
+          <select id="task-category" class="form-input">
+            <option value="work">💼 Work</option>
+            <option value="personal">🏠 Personal</option>
+            <option value="health">💪 Health</option>
+            <option value="shopping">🛒 Shopping</option>
+          </select>
+        </div>
+        <div class="form-group half">
+          <label class="form-label">Priority</label>
+          <select id="task-priority" class="form-input">
+            <option value="low">🟢 Low</option>
+            <option value="medium">🟡 Medium</option>
+            <option value="high">🔴 High</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Due date</label>
+        <input type="date" id="task-due" class="form-input" />
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-cancel" id="cancel-btn">Cancel</button>
+        <button class="btn-save" id="save-btn">Save Task</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
